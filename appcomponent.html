@@ -1,0 +1,19 @@
+<h1>Interpolation</h1>
+
+<p>Message: {{appName}}</p>
+
+<!--Property Binding-->
+<input type="text" [value] = "clientName">
+
+<!--Style Binding-->
+
+<p [style.color]="myColor">Text color is styled using property binding</p>
+
+<p [class]="appliedCSSClass">This text is styled using property binding</p>
+
+<p [class.blue] = "notappliedCSSClass">No style binding applied in this line</p>
+
+
+<!--Event Binding-->
+<h2>Event Binding</h2>
+<button (click)="showData($event)">Click this button</button>
