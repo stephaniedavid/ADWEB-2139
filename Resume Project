@@ -1,0 +1,79 @@
+//appmodule.ts
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { TestComponent } from './test/test.component';
+import { AboutComponent } from './about/about.component';
+import { ListingComponent } from './listing/listing.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { HomeComponent } from './home/home.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    TestComponent,
+    AboutComponent,
+    ListingComponent,
+    PagenotfoundComponent,
+    HomeComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+//approutingmodule.ts
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { TestComponent } from './test/test.component';
+import { AboutComponent } from './about/about.component';
+import { ListingComponent } from './listing/listing.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { HomeComponent } from './home/home.component';
+
+const routes: Routes = [{path:'about', component:AboutComponent},
+                        {path:'listing', component:ListingComponent},
+                        {path:'home', component:HomeComponent},
+                        {path:'test', component:TestComponent},
+                        {path:'', component:HomeComponent},
+                        {path:'**', component:PagenotfoundComponent}];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+//app.component.html
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">STEPHANIE</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="../home">About<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="../about">Skills</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" routerLink="../listing">Portfolio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="../test">Contact</a>
+        </li>
+      
+    </ul>
+   
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
