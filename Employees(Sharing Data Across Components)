@@ -45,4 +45,115 @@ import { MyserviceService } from './myservice.service';
 })
 export class AppModule { }
 
+//app.component.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'Employees';
+}
+
+//app.component.html
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: palevioletred;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: pink;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: black   ;
+}
+
+.active {
+  background-color: black;
+}
+</style>
+</head>
+<body>
+    
+<ul>
+  <li>
+      <a routerLink ="../emplist1">List 1</a>
+    </li>
+  <li>
+    <a routerLink ="../emplist2">List 2</a>
+    </li>
+  <li>
+    <a routerLink ="../emplist3">List 3</a>
+    </li>
+</ul>
+
+<router-outlet></router-outlet>
+
+</body>
+</html>
+
+//emplist1.component
+
+<div class="container">
+    <table class="table table-striped table-bordered thead-pink" border="1">
+      <thead>
+        <tr>
+          <th scope="">ID</th>
+          <th scope="col">Firstname</th>
+          <th scope="col">Lastname</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let list of employeeData">
+          <td>{{list.id}}</td>
+          <td>{{list.firstname}}</td>
+          <td>{{list.lastname}}</td>
+          <td>{{list.email}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+//app.routing.module.ts
+
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { Emplist1Component} from './emplist1/emplist1.component'
+import { Emplist2Component} from './emplist2/emplist2.component'
+import { Emplist3Component} from './emplist3/emplist3.component'
+
+const routes: Routes = [
+  {path: 'emplist1', component:Emplist1Component},
+  {path: 'emplist2', component:Emplist2Component},
+  {path: 'emplist3', component:Emplist3Component},
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+
 //
